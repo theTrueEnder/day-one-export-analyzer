@@ -26,9 +26,9 @@ In other words, run `python analyzer.py -a completed -f journal.py` (or whatever
 ---
 
 ## To-Do
-- [ ] Import and parse the journal data
-- [ ] Add argparse abilities
-- [ ] Make a working graph
+- [X] Import and parse the journal data
+- [X] Add argparse abilities
+- [X] Make a working graph
 - [X] Adjust for local time zones
 - [ ] Shift the completed/created graph 12h vertically (much more intuitive)
 - [ ] Add general statistics about completed/created times
