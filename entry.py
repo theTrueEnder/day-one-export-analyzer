@@ -12,14 +12,18 @@ def convert_to_local(tz, timestr):
 
 class Entry():
     def __init__(self, e):
-        self.tz = e['timeZone'].replace('\\/', '/')
-        self.created = convert_to_local(self.tz, e['creationDate'])
-        self.edit_duration = timedelta(seconds=e['editingTime'])
-        self.completed = self.created + self.edit_duration
-        self.uuid = e['uuid']
+        self._tz = e['timeZone'].replace('\\/', '/')
+        self._created = convert_to_local(self._tz, e['creationDate'])
+        self._edit_duration = timedelta(seconds=e['editingTime'])
+        self._completed = self._created + self._edit_duration
+        self._uuid = e['uuid']
         if 'location' in e:
-            self.lat = e['location']['latitude']
-            self.long = e['location']['longitude']
+            self._lat = e['location']['latitude']
+            self._long = e['location']['longitude']
+
+    def get_created_time(self):
+        return self._created
         
     def get_completed_time(self):
-        return self.created
+        return self._completed
+    
