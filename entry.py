@@ -14,7 +14,7 @@ class Entry():
     def __init__(self, e):
         self.tz = e['timeZone'].replace('\\/', '/')
         self.created = convert_to_local(self.tz, e['creationDate'])
-        self.edit_duration = timedelta(minutes=e['editingTime'])
+        self.edit_duration = timedelta(seconds=e['editingTime'])
         self.completed = self.created + self.edit_duration
         self.uuid = e['uuid']
         if 'location' in e:
@@ -22,4 +22,4 @@ class Entry():
             self.long = e['location']['longitude']
         
     def get_completed_time(self):
-        return self.completed
+        return self.created
