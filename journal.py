@@ -33,7 +33,7 @@ class Journal():
         [self.uuid_entries.update({entry.get_uuid(): entry}) for entry in updated_entries]
         self.entries = updated_entries
         
-    def _return_filter_result(filtered_entries: list[Entry]):
+    def _return_filter_result(self, filtered_entries: list[Entry]):
         e_ct = len(filtered_entries)
         if e_ct == 0:
             return {"code": NO_MATCH_CODE, "msg": NO_MATCH_MSG, "count": 0}
@@ -71,6 +71,7 @@ class Journal():
         return res
         
     def filter_by_country(self, country: str, negative=False, in_place=False)->dict:
+        print(f'Finding country: "{country}"')
         if not negative:
             entries = [entry for entry in self.entries if country == entry.get_country()]
         else:
@@ -136,11 +137,13 @@ class Journal():
         return res
         
     def filter_by_keyword(self, keyword: str, negative=False, in_place=False)->dict:
+        print(f'Finding {keyword} in entries..')
         if not negative:
             entries = [entry for entry in self.entries if keyword in entry.get_text()]
         else:
             entries = [entry for entry in self.entries if keyword not in entry.get_text()]
             
+        print(f'{len(entries)} matching entries found!')
         res = self._return_filter_result(entries)
         if res['code'] == SUCCESS_CODE and in_place:
             self._update_entries(entries)

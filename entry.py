@@ -24,12 +24,12 @@ class Entry():
         self._rich_text = e.get('richText', '')
         
         
-        self._country = self._get_multi(e, 'location', 'country')
-        self._admin_area = self._get_multi(e, 'location', 'administrativeArea')
-        self._locality = self._get_multi(e, 'location', 'localityName')
-        self._lat = self._get_multi(e, 'location', 'latitude')
-        self._long = self._get_multi(e, 'location', 'longitude')
-        self._placename = self._get_multi(e, 'location', 'placeName')
+        self._country = self._get_nested(e, 'location', 'country')
+        self._admin_area = self._get_nested(e, 'location', 'administrativeArea')
+        self._locality = self._get_nested(e, 'location', 'localityName')
+        self._lat = self._get_nested(e, 'location', 'latitude')
+        self._long = self._get_nested(e, 'location', 'longitude')
+        self._placename = self._get_nested(e, 'location', 'placeName')
     
     def __str__(self)->str:
         s = 'Entry object:\n\t'
@@ -43,17 +43,13 @@ class Entry():
         else:
             s += f'- Text: "{self._text}"\n\t'
     
-    def _get_multi(self, d: dict, default=None, *keys: str)->any:
-        val = d.get(keys[0])
-        for key in keys:
-            if val is None:
-                break
-            val = val.get(key)
-        
-        if val is None:
-            return default
+    def _get_nested(self, d: dict, key1, key2, default=None)->any:
+        res1 = d.get(key1)
+        if res1 is None:
+            return None
         else:
-            return val
+            res2 = res1.get(key2)
+            return res2
     
     def get_created_time(self)->datetime:
         return self._created

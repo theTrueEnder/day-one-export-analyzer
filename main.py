@@ -2,6 +2,8 @@ import json
 import argparse
 from pathlib import Path
 from analyzer import Analyzer
+from entry import Entry
+from journal import Journal
 
 parser = argparse.ArgumentParser()
 
@@ -9,7 +11,7 @@ parser.add_argument(
     "--analyzer", 
     "-a",
     action="store", 
-    choices=["completed", "created"],
+    choices=["completed", "created", "filter"],
     nargs="*"
 )
 
@@ -36,5 +38,8 @@ with open(target_file, 'r', errors="ignore") as f:
     file = json.load(f)
     
 journal = file['entries']
+entries = [Entry(entry) for entry in journal]
+journal = Journal(entries)
+
 a = Analyzer(journal, args.analyzer)
 a.analyze()
