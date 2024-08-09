@@ -1,8 +1,8 @@
 from entry import Entry
 
+SUCCESS_CODE = 1
 NO_MATCH_CODE = -1
 NO_MATCH_MSG = 'No entries matched filter'
-SUCCESS_CODE = 1
 
 
 class Journal():
