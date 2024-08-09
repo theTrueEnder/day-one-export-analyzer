@@ -34,18 +34,18 @@ In other words, run `python analyzer.py -a completed -f journal.py` (or whatever
 - [ ] Add general statistics about completed/created times
 - [ ] Add a map function (similar to what exists in the app)
 - [ ] Get weather information from a certain day
-- [ ] Get weather informatiom from a range of days
+- [ ] Get weather information from a range of days
 - [ ] GUI?
-- [ ] Add a selection pane with different specificities:
+- [X] Add a selection pane with different specificities:
   - [ ] Add ability to select range of entry dates for all functionalities
-  - [ ] Select only pinned entries
-  - [ ] Select only starred entries
+  - [X] Select only pinned entries
+  - [X] Select only starred entries
   - [ ] Grab text/richtext of groups of entries
-  - [ ] Select only entries that contain a word/phrase
+  - [X] Select only entries that contain a word/phrase
   - [ ] Select only entries done on a certain device
-  - [ ] Select only entries from a certain country
-  - [ ] Select only entries from a certain locality
-  - [ ] Select only entries from a certain address (placeName)
-  - [ ] Select entries by tag
+  - [X] Select only entries from a certain country
+  - [X] Select only entries from a certain locality
+  - [X] Select only entries from a certain address (placeName)
+  - [X] Select entries by tag
 
 > **Disclaimer:** Day One was not involved in any form with the creation of this tool, nor does it endorse or recognize its existence.
