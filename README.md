@@ -11,11 +11,11 @@ I love Python.
 
 It's pretty simple. Make sure you already have Python installed, as well as `matplotlib`, `datetime`, and `pytz`.
 ```c
-analyzer.py [-h] --a {completed,created} [--f [FILE]]
+analyzer.py [-h] --a {completed,created,filter} [--f [FILE]]
 
 options:
   -h, --help            show this help message and exit
-  --analyzer {completed,created}, -a {completed,created}
+  --analyzer {completed,created,filter}, -a {completed,created,filter}
                         sets the mode of the analyzer
   --file [FILE], -f [FILE]
                         filename or path to the Day One journal .json file
